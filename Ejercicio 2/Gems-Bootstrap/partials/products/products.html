@@ -1,0 +1,42 @@
+<div class="row" ng-controller="Products as prods">
+    <div class="col-lg-8" mx-auto>
+        <ul class="list-group">
+            <li class="form-group row">
+                <div class="col-sm-4">
+                    <label for="Search" class="col-sm-2 col-form-label">Buscar</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext" placeholder="Buscar..." id="Search" ng-model="Search" type="text" name="" id="">
+                </div>
+                <div>
+                    <label for="priceSearch" class="col-sm-2 col-form-label">Buscar por:</label>
+                    <div class="col-sm-4">
+                        <select ng-model="priceSearch" name="" id="priceSearch">
+                            <option value="price">Precio</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        <li class="list-group-item" ng-repeat="p in prods.products | filter:Search | orderBy:priceSearch" ng-click="prods.go(p._id)">
+                <div class="media align-items-lg-center flex-column flex-lg-row">
+                    <div class="media-body order-2 order-lg-1">
+                        <h3 class="mt-0 font-weight-bold mb-2">{{p.name}}</h3>
+                        <p class="font-italic text-muted mb-0">{{p.description}}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-1">
+                            <h6 class="font-weight-bold my-1">{{p.price | currency}}</h6>
+                            <ul class="list-inlines small">
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-rose"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-rose"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-rose"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-rose"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-gray"></i></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <img ng-src="{{p.images[0]}}" alt="Gems Placeholder" width="200" class="ml-lg-5 order-1 order-lg-2 img-raised rounded img-fluid"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
